@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects</title>
+  <style>
+    /* container + background */
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 100vw; height: 100vh;
+    }
+    .bg {
+      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* each icon + label */
+    .icon-container {
+      position: absolute;
+      text-align: center;
+      cursor: pointer;
+    }
+    .icon-container .icon {
+      width: 100%;
+      height: auto;
+      transition: transform 0.2s ease;
+    }
+    .icon-container .icon:hover {
+      transform: scale(1.1);
+    }
+    .icon-container .icon-label {
+      margin-top: 4px;
+      font-size: 1rem;
+      color: #fff;
+      text-shadow: 0 0 2px rgba(0,0,0,0.8);
+      pointer-events: none;
+    }
+
+    /* Up-one-level button */
+    #back-button {
+      position: absolute;
+      left: 82%;
+      top: 76%;
+      width: 5%;
+      cursor: pointer;
+      display: none;               /* hidden until you enter a folder */
+      z-index: 10;                 /* stay on top */
+    }
+    #back-button .icon {
+      width: 100%;
+    }
+    #back-button .icon-label {
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Zoomed-in background -->
+    <img src="monitor_zoomed.png" alt="Zoomed Computer" class="bg" />
+
+    <!-- ROOT LEVEL ITEMS (class="root") -->
+    <!-- Project 1 -->
+    <div
+      class="icon-container root"
+      style="left:14%; top:15%; width:5%;"
+      data-name="projectSite"
+    >
+      <img src="icons/link_icon.png" alt="Project 1" class="icon" />
+      <div class="icon-label">Projects Link</div>
+    </div>
+
+    <!-- <div
+      class="icon-container root"
+      style="left:14%; top:30%; width:5%;"
+      data-name="project2"
+    >
+      <img src="icons/code_icon.png" alt="Project 1" class="icon" />
+      <div class="icon-label">Project 2</div>
+    </div>
+
+    <div
+      class="icon-container root"
+      style="left:14%; top:45%; width:5%;"
+      data-name="project3"
+    >
+      <img src="icons/code_icon.png" alt="Project 1" class="icon" />
+      <div class="icon-label">Project 3</div>
+    </div>
+
+    <div
+      class="icon-container root"
+      style="left:14%; top:60%; width:5%;"
+      data-name="project4"
+    >
+      <img src="icons/code_icon.png" alt="Project 1" class="icon" />
+      <div class="icon-label">Project 4</div>
+    </div>
+
+    <div
+      class="icon-container root"
+      style="left:14%; top:75%; width:5%;"
+      data-name="project5"
+    >
+      <img src="icons/code_icon.png" alt="Project 1" class="icon" />
+      <div class="icon-label">Project 5</div>
+    </div> -->
+
+    <!-- Root folders -->
+    <div
+      class="icon-container root folder"
+      style="left:22%; top:15%; width:5%;"
+      data-name="folderAI"
+    >
+      <img src="icons/directory_icon.png" alt="Traditional AI Dir" class="icon" />
+      <div class="icon-label">Traditional AI</div>
+    </div>
+
+    <div
+      class="icon-container root folder"
+      style="left:22%; top:30%; width:5%;"
+      data-name="folderML"
+    >
+      <img src="icons/directory_icon.png" alt="Machine Learning Dir" class="icon" />
+      <div class="icon-label">Machine Learning</div>
+    </div>
+
+    <div
+      class="icon-container root folder"
+      style="left:22%; top:45%; width:5%;"
+      data-name="folderResearch"
+    >
+      <img src="icons/directory_icon.png" alt="Research Dir" class="icon" />
+      <div class="icon-label">Research</div>
+    </div>
+
+    <div
+      class="icon-container root folder"
+      style="left:22%; top:60%; width:5%;"
+      data-name="folderOther"
+    >
+      <img src="icons/directory_icon.png" alt="Other Dir" class="icon" />
+      <div class="icon-label">Other</div>
+    </div>
+
+    <!-- Power Off -->
+    <div
+      class="icon-container root"
+      style="left:82%; top:76%; width:6%;"
+      onclick="location.href='index.html?view=full';"
+      title="Return to main page"
+    >
+      <img src="icons/redx_icon.png" alt="Power" class="icon" />
+    </div>
+
+    <!-- FOLDER A CONTENTS (class="in-folder", data-parent="folderA") -->
+    <!-- these start hidden and only show when you click Folder A -->
+    <div
+      class="icon-container in-folder"
+      style="left:14%; top:15%; width:5%;"
+      data-parent="folderAI"
+      data-name="projectAIPlayer"
+    >
+      <img src="icons/code_icon.png" alt="Lasker Morris AI Player" class="icon" />
+      <div class="icon-label">Lasker Morris AI Player</div>
+    </div>
+
+    <!-- <div
+      class="icon-container folder"
+      style="left:22%; top:15%; width:5%;"
+      data-parent="folderAI"
+      data-name="folderC"
+    >
+      <img src="icons/directory_icon.png" alt="Folder A" class="icon" />
+      <div class="icon-label">Folder C</div>
+    </div> -->
+
+    <div
+      class="icon-container in-folder"
+      style="left:14%; top:15%; width:5%;"
+      data-parent="folderML"
+      data-name="projectMLFromScratch"
+    >
+      <img src="icons/code_icon.png" alt="ML From Scratch" class="icon" />
+      <div class="icon-label">ML From Scratch</div>
+    </div>
+
+    <div
+      class="icon-container in-folder"
+      style="left:14%; top:15%; width:5%;"
+      data-parent="folderResearch"
+      data-name="projectAIEthics"
+    >
+      <img src="icons/code_icon.png" alt="AI Ethics and Responsibility" class="icon" />
+      <div class="icon-label">AI Ethics Research</div>
+    </div>
+
+    <div
+      class="icon-container in-folder"
+      style="left:14%; top:15%; width:5%;"
+      data-parent="folderOther"
+      data-name="projectIQP"
+    >
+      <img src="icons/code_icon.png" alt="WPI IQP" class="icon" />
+      <div class="icon-label">Smart Tech in Acadia</div>
+    </div>
+
+    <!-- UP-ONE-LEVEL BUTTON -->
+    <div id="back-button" class="icon-container">
+      <img src="icons/arrow.png" alt="Back" class="icon" />
+    </div>
+
+    <!-- DESCRIPTION PANEL (hidden by default) -->
+    <div id="desc-panel" style="
+        position: absolute;
+        left: 35%; top: 25%;
+        width: 40%; height: 50%;
+        background: rgba(210,210,210,0.85);
+        color: black;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #000;
+        display: none;
+        z-index: 20;
+        overflow-y: auto;
+      ">
+      <h3 id="desc-title" style="margin-top:0"><u>
+        <a href="#" target="_blank" id="desc-link" style="color:blue; text-decoration:none;"></a>
+      </u></h3>
+      <hr>
+      <div id="desc-text" style="font-size:0.9rem; line-height:1.4; color: black;"></div>
+      <button id="desc-close" style="
+          position:absolute; top:0.5rem; right:0.5rem;
+          background:transparent; border:none; color:black;
+          font-size:1.2rem; cursor:pointer;
+        ">X</button>
+    </div>
+
+  </div>
+
+  <script src="projects.js"></script>
+
+  <script>
+    const containers = document.querySelectorAll('.icon-container:not(#back-button)');
+    const backBtn = document.getElementById('back-button');
+    let currentFolder = null;
+
+    function renderView() {
+      containers.forEach(el => {
+        if (!currentFolder) {
+          // show root items
+          el.hidden = !el.classList.contains('root');
+        } else {
+          // show only items whose parent matches currentFolder
+          el.hidden = el.dataset.parent !== currentFolder;
+        }
+      });
+      backBtn.style.display = currentFolder ? 'block' : 'none';
+    }
+
+    document.querySelectorAll('.icon-container.folder').forEach(el => {
+      el.addEventListener('click', () => {
+        currentFolder = el.dataset.name;
+        renderView();
+      });
+    });
+
+    backBtn.addEventListener('click', () => {
+      const folderEl = document.querySelector(
+        `.icon-container.folder[data-name="${currentFolder}"]`
+      );
+      const parent = folderEl.dataset.parent;
+      currentFolder = parent || null;
+      renderView();
+    });
+
+    const panel    = document.getElementById("desc-panel");
+    const titleEl  = document.getElementById("desc-link");
+    const textEl   = document.getElementById("desc-text");
+    const closeBtn = document.getElementById("desc-close");
+
+    document.querySelectorAll(".icon-container").forEach(el => {
+        const name = el.dataset.name;
+        if (projects[name]) {
+        el.addEventListener("click", e => {
+            e.stopPropagation();           // prevent folder/back logic
+            const d = projects[name];
+            titleEl.textContent     = d.title;
+            titleEl.href            = d.link;
+            textEl.textContent      = d.text;
+            panel.style.display     = "block";
+        });
+        }
+    });
+
+    // close button
+    closeBtn.addEventListener("click", () => {
+        panel.style.display = "none";
+    });
+
+    // initial state
+    renderView();
+  </script>
+</body>
+</html>

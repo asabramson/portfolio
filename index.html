@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="main.css">
+  <script>
+    // Run on refresh
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      // If the user explicitly asked for full view, skip the redirect
+      if (params.get('view') === 'full') return;
+      // Threshold for dynamic vs text-based version
+      // 1.31 value was found to be my preference after testing on a 16:9 monitor
+      if (window.innerHeight * 1.31 >= window.innerWidth) {
+        window.location.replace('redirect.html');
+      }
+    })();
+  </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace, 'Courier New', Courier;
+      font-weight: 500;
+    }
+    .image-container {
+      position: relative;
+      text-align: center;
+    }
+    .overlay-text {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    img {
+      width: 100%; /* Makes the image responsive */
+      height: auto; /* Keeps aspect ratio */
+    }
+  </style>
+</head>
+<body>
+    
+    <div style="position: relative; width: 100vw; height: 100vh; overflow: hidden;">
+        <!-- The image -->
+        <img src="pixel_art_desk_image.png" alt="Portfolio image should be here!" style="width: 100%; height: 100%; object-fit: cover;">
+      
+        <!-- The text -->
+        <p class="overlay-text">
+          Aaron Abramson - Portfolio
+          <br>
+          Click on the book for more information!
+        </p>
+
+
+      
+        <!-- The SVG overlay -->
+        <svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+
+          <a href="javascript:void(help)"
+            onclick="document.getElementById('modal01').style.display='block';"
+            style="cursor: pointer;">
+            <!-- Title used for a hover tooltip-->
+            <polygon points="718,360 774,360 797,405 797,429 738,429 718,387" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(about)" onclick="document.getElementById('modal02').style.display='block';">
+            <polygon points="659,383 714,383 731,429 675,429" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(resume)" onclick="window.open('aaronabramson_resume.pdf','_blank')">
+            <polygon points="249,369 319,369 339,424 223,424" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(linkedin)" onclick="window.open('https://linkedin.com/in/aaronabramson','_blank')">
+            <polygon points="188,355 194,264 245,257 252,251 274,251 279,257 332,264 341,366 206,366" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(github)" onclick="window.open('https://github.com/asabramson','_blank')">
+            <polygon points="269,226 250,207 250,176 273,150 312,150 335,176 335,207 318,226" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(wip)" onclick="window.open('empty.html','_self')">
+            <polygon points="688,330 683,321 683,261 688,251 723,251 730,261 730,321 723,330" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(projects)" onclick="window.open('index2.html','_self')">
+            <polygon points="400,310 400,182 617,182 617,310 537,310 537,318 569,318 576,336 442,336 448,318 481,318 481,310" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(projects)" onclick="window.open('index2.html','_self')">
+            <polygon points="398,421 398,407 414,367 559,367 576,407 576,421" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(projects)" onclick="window.open('index2.html','_self')">
+            <polygon points="596,399 617,379 643,404 622,424" fill="transparent" style="pointer-events: all;"><title>Click me!</title></polygon>
+          </a>
+
+          <a href="javascript:void(hidden)" onclick="showAlert()">
+            <polygon points="140,60 150,50" fill="transparent" style="pointer-events: all;"></polygon>
+          </a>
+      
+        </svg>
+
+
+      </div>
+      
+      <div id="modal01" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+          <header class="w3-container w3-teal"> 
+            <span onclick="document.getElementById('modal01').style.display='none'" 
+            class="w3-button w3-display-topright">&times;</span>
+            <h2 style="font-family: 'Courier New', Courier, monospace; font-weight: 550;">Welcome to my Portfolio!</h2>
+          </header>
+          <div class="w3-container">
+            <p>Click on different items around the room; you will find my Github, Linkedin, resume, a brief summary about me, and a fun interactive
+              computer simulation showcasing my various projects! Individual creativity is one of the best indicators of a good software
+              developer, and while AI has become immensely helpful in day-to-day work for many developers (including myself), it can often limit
+              one's sense of individuality. I feel that this unique portfolio site is a good representation of my passion for developing software.
+              <br>
+              <br>
+              <em>"Creative work is a gift to the world and every being in it. Don't cheat us of your contribution. Give us what you've got." - Steven Pressfield</em>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="modal02" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+          <header class="w3-container w3-teal"> 
+            <span onclick="document.getElementById('modal02').style.display='none'" 
+            class="w3-button w3-display-topright">&times;</span>
+            <h2 style="font-family: 'Courier New', Courier, monospace; font-weight: 550;">Who am I?</h2>
+          </header>
+          <div class="w3-container">
+            <p>I am Aaron, a student at Worcester Polytechnic Institute currently pursuing a BS and an MS in Computer Science. 
+              My areas of study are centered around Artificial Intelligence, specifically its theoretical aspects.
+              I am also intrigued by the intersection of AI with other fields of Computer Science, such as Cybersecurity.
+              If you wish to contact me, you can reach me by email, <strong>insert@later.com</strong></p>
+          </div>
+        </div>
+      </div>
+      
+  <script>
+    var modal1 = document.getElementById('modal01');
+    var modal2 = document.getElementById('modal02');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+    }
+    if (event.target == modal2) {
+        modal2.style.display = "none";
+    }
+    }
+
+    function showAlert() {
+      alert("You found me :D");
+    }
+  </script>
+</body>
+</html>

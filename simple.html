@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    body { font-family: monospace; padding:2rem; }
+    h1   { font-family: monospace; text-align: center; }
+    h4   { font-family: monospace; text-align: center; }
+    ul   { list-style:none; padding:0; }
+    li   { margin-bottom:2rem; }
+    a    { font-size:1.2rem; color:blue; text-decoration:none; }
+  </style>
+</head>
+<body>
+    <h1>Aaron Abramson - Portfolio (Text-based version)</h1>
+    <h4>If you would like the <u><a href="index.html" target="_self">full version</a></u>, ensure you are using a landscape-oriented device</h4>
+    <hr>
+    <nav>
+        <ul id="main-list">
+            <li>- <a href="javascript:void(about)" onclick="document.getElementById('modal02').style.display='block';">About Me</a></li>
+            <li>- <a href="javascript:void(projects)" onclick="toggleProjects()">Projects</a></li>
+            <li>- <a href="javascript:void(resume)" onclick="window.open('aabramson_resume_v03.pdf','_blank')">Resume</a></li>
+            <li>- <a href="javascript:void(linkedin)" onclick="window.open('https://linkedin.com/in/aaronabramson','_blank')">Linkedin</a></li>
+            <li>- <a href="javascript:void(github)" onclick="window.open('https://github.com/asabramson','_blank')">Github</a></li>
+            <li>- <a href="javascript:void(wip)" onclick="window.open('empty.html','_self')">Work in progress</a></li>
+        </ul>
+    </nav>
+
+    <div id="proj-list" style="display: none;">
+        <button onclick="toggleProjects()">Return</button>
+        <hr>
+        <ul id="project-list"></ul>
+        <hr>
+        <button onclick="toggleProjects()">Return</button>
+    </div>
+
+
+    <div id="modal02" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+          <header style="padding-bottom: 4px;" class="w3-container w3-teal"> 
+            <span onclick="document.getElementById('modal02').style.display='none'" 
+            class="w3-button w3-display-topright">&times;</span>
+            <h2 style="font-family: 'Courier New', Courier, monospace; font-weight: 550;">Who am I?</h2>
+          </header>
+          <div class="w3-container">
+            <p style="font-family: monospace;">I am a student at Worcester Polytechnic Institute currently pursuing a BS and an MS in Computer Science. 
+              My areas of study are centered around Artificial Intelligence, specifically its theoretical aspects.
+              I am also intrigued by the intersection of AI with other fields of Computer Science, such as Cybersecurity.
+              If you wish to contact me, you can reach me by email, <strong>insert@later.com</strong></p>
+          </div>
+        </div>
+      </div>
+      <script src="projects.js"></script>
+      <script>
+        console.log("projects:", window.projects);
+
+        var modal2 = document.getElementById('modal02');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
+        }
+
+
+        const list = document.getElementById("project-list");
+        Object.values(projects).forEach(p => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <a href="${p.link}" target="_blank">${p.title}</a>
+            <p>${p.text}</p>
+        `;
+        list.append(li);
+        });
+
+        function toggleProjects() {
+            const rootList = document.getElementById('main-list');
+            const projList = document.getElementById('proj-list');
+            if (rootList.style.display === 'none') {
+                rootList.style.display = "block";
+                projList.style.display = "none";
+            } else {
+                rootList.style.display = "none";
+                projList.style.display = "block";
+            }
+        }
+        
+      </script>
+</body>
